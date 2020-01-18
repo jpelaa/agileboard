@@ -1,1 +1,0 @@
-{"version":3,"sources":["layouts/Dashboard/index.jsx"],"names":["className"],"mappings":"iHAAA,2BAEe,qBACb,OAAO,yBAAKA,UAAU,IAAf","file":"static/js/5.03cafe0b.chunk.js","sourcesContent":["import React from \"react\";\n\nexport default () => {\n  return <div className=\"\">dashboard</div>;\n};\n"],"sourceRoot":""}

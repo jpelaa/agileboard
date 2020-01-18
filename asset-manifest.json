@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/agileboard.github.io/static/css/main.fb666b38.chunk.css",
-    "main.js": "/agileboard.github.io/static/js/main.2f0f1aa1.chunk.js",
-    "main.js.map": "/agileboard.github.io/static/js/main.2f0f1aa1.chunk.js.map",
-    "runtime-main.js": "/agileboard.github.io/static/js/runtime-main.b2f10c3b.js",
-    "runtime-main.js.map": "/agileboard.github.io/static/js/runtime-main.b2f10c3b.js.map",
-    "static/js/2.1ca28826.chunk.js": "/agileboard.github.io/static/js/2.1ca28826.chunk.js",
-    "static/js/2.1ca28826.chunk.js.map": "/agileboard.github.io/static/js/2.1ca28826.chunk.js.map",
-    "static/js/3.fa6c8a34.chunk.js": "/agileboard.github.io/static/js/3.fa6c8a34.chunk.js",
-    "static/js/3.fa6c8a34.chunk.js.map": "/agileboard.github.io/static/js/3.fa6c8a34.chunk.js.map",
-    "static/js/4.55217554.chunk.js": "/agileboard.github.io/static/js/4.55217554.chunk.js",
-    "static/js/4.55217554.chunk.js.map": "/agileboard.github.io/static/js/4.55217554.chunk.js.map",
-    "static/js/5.03cafe0b.chunk.js": "/agileboard.github.io/static/js/5.03cafe0b.chunk.js",
-    "static/js/5.03cafe0b.chunk.js.map": "/agileboard.github.io/static/js/5.03cafe0b.chunk.js.map",
-    "index.html": "/agileboard.github.io/index.html",
-    "precache-manifest.c738770f5ece6713947cf5d5df7398d5.js": "/agileboard.github.io/precache-manifest.c738770f5ece6713947cf5d5df7398d5.js",
-    "service-worker.js": "/agileboard.github.io/service-worker.js",
-    "static/css/main.fb666b38.chunk.css.map": "/agileboard.github.io/static/css/main.fb666b38.chunk.css.map",
-    "static/js/2.1ca28826.chunk.js.LICENSE": "/agileboard.github.io/static/js/2.1ca28826.chunk.js.LICENSE",
-    "static/media/agile.svg": "/agileboard.github.io/static/media/agile.ba108974.svg"
+    "main.css": "/agileboard/static/css/main.fb666b38.chunk.css",
+    "main.js": "/agileboard/static/js/main.a27f3459.chunk.js",
+    "main.js.map": "/agileboard/static/js/main.a27f3459.chunk.js.map",
+    "runtime-main.js": "/agileboard/static/js/runtime-main.38c83f84.js",
+    "runtime-main.js.map": "/agileboard/static/js/runtime-main.38c83f84.js.map",
+    "static/js/2.7e1beca0.chunk.js": "/agileboard/static/js/2.7e1beca0.chunk.js",
+    "static/js/2.7e1beca0.chunk.js.map": "/agileboard/static/js/2.7e1beca0.chunk.js.map",
+    "static/js/3.a8be2fb5.chunk.js": "/agileboard/static/js/3.a8be2fb5.chunk.js",
+    "static/js/3.a8be2fb5.chunk.js.map": "/agileboard/static/js/3.a8be2fb5.chunk.js.map",
+    "static/js/4.28249c1c.chunk.js": "/agileboard/static/js/4.28249c1c.chunk.js",
+    "static/js/4.28249c1c.chunk.js.map": "/agileboard/static/js/4.28249c1c.chunk.js.map",
+    "static/js/5.b1445c6d.chunk.js": "/agileboard/static/js/5.b1445c6d.chunk.js",
+    "static/js/5.b1445c6d.chunk.js.map": "/agileboard/static/js/5.b1445c6d.chunk.js.map",
+    "index.html": "/agileboard/index.html",
+    "precache-manifest.c7cd4c5b7e558bdb457e8234cab5ecc9.js": "/agileboard/precache-manifest.c7cd4c5b7e558bdb457e8234cab5ecc9.js",
+    "service-worker.js": "/agileboard/service-worker.js",
+    "static/css/main.fb666b38.chunk.css.map": "/agileboard/static/css/main.fb666b38.chunk.css.map",
+    "static/js/2.7e1beca0.chunk.js.LICENSE": "/agileboard/static/js/2.7e1beca0.chunk.js.LICENSE",
+    "static/media/agile.svg": "/agileboard/static/media/agile.ba108974.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b2f10c3b.js",
-    "static/js/2.1ca28826.chunk.js",
+    "static/js/runtime-main.38c83f84.js",
+    "static/js/2.7e1beca0.chunk.js",
     "static/css/main.fb666b38.chunk.css",
-    "static/js/main.2f0f1aa1.chunk.js"
+    "static/js/main.a27f3459.chunk.js"
   ]
 }
