@@ -1,0 +1,2 @@
+(this["webpackJsonpagile-board"]=this["webpackJsonpagile-board"]||[]).push([[4],{25:function(e,t,a){"use strict";a.r(t);var n=a(0),i=a.n(n);t.default=function(){return i.a.createElement("div",null,"Completed")}}}]);
+//# sourceMappingURL=4.55217554.chunk.js.map
