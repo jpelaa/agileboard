@@ -64,6 +64,31 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+a {
   color: $black;
+}
+
+//Custom Scroll
+
+/* width */
+*::-webkit-scrollbar {
+  border-radius: $border-radius;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  background: $gray-2;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: $gray-3;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: $black;
 }

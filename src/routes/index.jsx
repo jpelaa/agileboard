@@ -1,24 +1,46 @@
-import React, { Suspense, lazy } from "react";
-import { Router } from "@reach/router";
+import React, { Suspense } from "react";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Loader from "components/Loader";
-import NotFound from "layouts/NotFound";
+import routes from "./route.config";
 
-const DashBoard = lazy(() => import("layouts/Dashboard"));
-const Login = lazy(() => import("layouts/Login"));
-const Completed = lazy(() => import("layouts/Completed"));
+const authPath = "/login";
 
-const Routes = () => {
+const Routes = ({ isAuthenticated }) => {
   return (
     <Suspense fallback={<Loader />}>
-      <Router>
-        <DashBoard path="/dashboard" />
-        <Login path="/login" />
-        <Completed path="/completed" />
-        <NotFound default />
-      </Router>
+      <HashRouter basepath="/">
+        <Switch>
+          {routes.map((route, i) => (
+            <Route
+              key={route.key || i}
+              path={route.path}
+              exact={route.exact}
+              render={props => {
+                if (route.authentication && route.path !== authPath) {
+                  if (isAuthenticated) {
+                    return <route.component {...props} routes={route.routes} />;
+                  }
+                  if (!isAuthenticated) return <Redirect to="/login" />;
+                }
+                if (!route.authentication) {
+                  if (route.path === authPath) {
+                    if (isAuthenticated) return <Redirect to="/home" />;
+                    if (!isAuthenticated) return <route.component {...props} />;
+                  } else if (route.default) {
+                    if (isAuthenticated) return <Redirect to="/home" />;
+                    if (!isAuthenticated) return <Redirect to="/login" />;
+                  } else {
+                    return <route.component {...props} />;
+                  }
+                }
+              }}
+            />
+          ))}
+        </Switch>
+      </HashRouter>
     </Suspense>
   );
 };
 
-export default Routes;
+export default React.memo(Routes);
