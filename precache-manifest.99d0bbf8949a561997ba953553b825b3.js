@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bacddf7fefcd78ef14c840040b1b64da",
+    "revision": "f227fa76696616d2b127ee6f481966a0",
     "url": "/agileboard/index.html"
   },
   {
-    "revision": "e3eb6160f14519f2e566",
-    "url": "/agileboard/static/css/main.9629fe9e.chunk.css"
+    "revision": "a73f21982e587e6e2f9a",
+    "url": "/agileboard/static/css/main.5d2705e2.chunk.css"
   },
   {
     "revision": "b0aa92baf767f674153d",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/agileboard/static/js/2.775dac23.chunk.js.LICENSE"
   },
   {
-    "revision": "9267b496917e128c8442",
-    "url": "/agileboard/static/js/3.6c476b9a.chunk.js"
+    "revision": "1adedb4bda30048c30cc",
+    "url": "/agileboard/static/js/3.35cb496d.chunk.js"
   },
   {
     "revision": "1464d9076ddaaad2d580",
@@ -28,12 +28,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/agileboard/static/js/5.4160c1f4.chunk.js"
   },
   {
-    "revision": "e3eb6160f14519f2e566",
+    "revision": "a73f21982e587e6e2f9a",
     "url": "/agileboard/static/js/main.ce947af5.chunk.js"
   },
   {
-    "revision": "d4defc1e3664cf960c4c",
-    "url": "/agileboard/static/js/runtime-main.1f1d48c4.js"
+    "revision": "b4b6af41e47bc15fe37b",
+    "url": "/agileboard/static/js/runtime-main.366a55ef.js"
   },
   {
     "revision": "ba108974e3dc1e0ea06e9ce00d5b612e",
