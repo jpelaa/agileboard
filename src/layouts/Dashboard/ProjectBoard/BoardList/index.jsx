@@ -17,7 +17,7 @@ const BoardList = ({ name, id, taskList, moveTask }) => {
   };
   return (
     <div
-      className="project-board-card"
+      className="project-board-card "
       draggable={true}
       onDragStart={e => onDragStart(e, id)}
       onDragOver={e => onDragOver(e)}

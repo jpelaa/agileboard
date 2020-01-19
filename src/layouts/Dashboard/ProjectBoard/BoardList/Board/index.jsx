@@ -1,12 +1,14 @@
 import React from "react";
 import TaskIcon from "./TaskIcon";
+import { useStyleForDrag } from "helper/customhooks";
 
 const Board = props => {
+  useStyleForDrag();
   const onDragStart = (e, dragIndex) => {
     e.dataTransfer.setData("dragIndex", dragIndex);
   };
 
-  const onDragOver = (e, taskId) => {
+  const onDragOver = e => {
     e.preventDefault();
   };
 
