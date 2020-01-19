@@ -1,13 +1,18 @@
 import React from "react";
-import BoardList from "./BoardList";
+import BoardList from "containers/BoardList";
 
-const ProjectBoard = () => {
+const ProjectBoard = ({ statusList }) => {
   return (
     <div className="project-board">
-      <BoardList name="todo" />
-      <BoardList name="in-progress" />
-      <BoardList name="testing" />
-      <BoardList name="done" />
+      {statusList.map(({ statusId, statusName }) => {
+        return (
+          <BoardList
+            key={`Status-${statusId}`}
+            id={statusId}
+            name={statusName}
+          />
+        );
+      })}
     </div>
   );
 };

@@ -1,13 +1,15 @@
 import React from "react";
 
-const ProjectHeader = () => {
+const ProjectHeader = ({ sprintName, history }) => {
   return (
     <div className="project-header">
       <div className="project-header-title">
-        <h1>Sprint 1</h1>
+        <h1>{sprintName}</h1>
       </div>
       <div className="project-timeline">
-        <button type="button">complete</button>
+        <button type="button" onClick={() => history.push("/completed")}>
+          complete
+        </button>
       </div>
     </div>
   );

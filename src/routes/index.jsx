@@ -4,11 +4,9 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import Loader from "components/Loader";
 import routes from "./route.config";
 
-const isAuthenticated = () => localStorage.hasOwnProperty("userToken");
-
 const authPath = "/login";
 
-const Routes = () => {
+const Routes = ({ isAuthenticated }) => {
   return (
     <Suspense fallback={<Loader />}>
       <HashRouter basepath="/">
@@ -20,19 +18,18 @@ const Routes = () => {
               exact={route.exact}
               render={props => {
                 if (route.authentication && route.path !== authPath) {
-                  if (isAuthenticated()) {
+                  if (isAuthenticated) {
                     return <route.component {...props} routes={route.routes} />;
                   }
-                  if (!isAuthenticated()) return <Redirect to="/login" />;
+                  if (!isAuthenticated) return <Redirect to="/login" />;
                 }
                 if (!route.authentication) {
                   if (route.path === authPath) {
-                    if (isAuthenticated()) return <Redirect to="/home" />;
-                    if (!isAuthenticated())
-                      return <route.component {...props} />;
+                    if (isAuthenticated) return <Redirect to="/home" />;
+                    if (!isAuthenticated) return <route.component {...props} />;
                   } else if (route.default) {
-                    if (isAuthenticated()) return <Redirect to="/home" />;
-                    if (!isAuthenticated()) return <Redirect to="/login" />;
+                    if (isAuthenticated) return <Redirect to="/home" />;
+                    if (!isAuthenticated) return <Redirect to="/login" />;
                   } else {
                     return <route.component {...props} />;
                   }
@@ -46,4 +43,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default React.memo(Routes);

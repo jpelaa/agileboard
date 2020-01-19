@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import ProjectHeader from "./ProjectHeader";
-import ProjectBoard from "./ProjectBoard";
+import Header from "containers/Header";
+import ProjectHeader from "containers/ProjectHeader";
+import ProjectBoard from "containers/ProjectBoard";
 
 export default () => {
   return (

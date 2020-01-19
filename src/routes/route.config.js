@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const Login = lazy(() => import("layouts/Login"));
+const Login = lazy(() => import("containers/Login"));
 
 const Dashboard = lazy(() => import("layouts/Dashboard"));
 

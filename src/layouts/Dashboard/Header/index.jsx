@@ -2,7 +2,7 @@ import React from "react";
 import AgilifyLogo from "assets/svg/agile.svg";
 import BrandName from "components/BrandName";
 
-const Header = ({ userName = "Jp Elaa" }) => {
+const Header = ({ currentUser, resetUsers }) => {
   return (
     <header>
       <div className="logo">
@@ -11,9 +11,11 @@ const Header = ({ userName = "Jp Elaa" }) => {
       </div>
       <i className="fa fa-bars hamburger"></i>
       <nav id="menu">
-        <p> {userName}</p>
+        <p> {currentUser}</p>
         <p>
-          <a href="#">sign out</a>
+          <a href="#" onClick={() => resetUsers()}>
+            sign out
+          </a>
         </p>
       </nav>
     </header>
