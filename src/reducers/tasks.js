@@ -20,8 +20,8 @@ const initialState = {
       epicId: 1,
       description:
         "(8) Clicking the collection beneath a board should filter by collection, not open collections pop-over",
-      assignee: "prasath",
       storyPoint: 1,
+      assignee: "prasath",
       status: 2
     },
     {
@@ -105,31 +105,36 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case actionTypes.SWAP_TASKS:
-      console.log(
-        action.payload.dragTaskId,
-        action.payload.dropTaskId,
-        " drap and drop in reducer"
-      );
-      const taskList = [...state.taskList];
-      const dropIndex = taskList.findIndex(
+      const newTaskList = [...state.taskList];
+      const dropIndex = newTaskList.findIndex(
         ({ taskId }) => taskId === action.payload.dropTaskId
       );
-      const dragIndex = taskList.findIndex(
+      const dragIndex = newTaskList.findIndex(
         ({ taskId }) => taskId === action.payload.dragTaskId
       );
-      console.log(dragIndex, dropIndex, "dragIndex, dropIndex in reducer");
 
-      const temp = { ...taskList[dragIndex] };
-      console.log(temp, " dragValue");
-      console.log(taskList[dropIndex], " dropValue");
-      taskList[dragIndex] = { ...taskList[dropIndex] };
-      taskList[dropIndex] = temp;
-      console.log(taskList[dragIndex], taskList[dropIndex], "after swap  ");
-      console.log(taskList);
+      const temp = { ...newTaskList[dragIndex] };
+      newTaskList[dragIndex] = { ...newTaskList[dropIndex] };
+      newTaskList[dropIndex] = temp;
       return {
-        state,
-        taskList: [...taskList]
+        ...state,
+        taskList: [...newTaskList]
       };
+    case actionTypes.MOVE_TASK:
+      const newTaskList1 = [...state.taskList];
+      const changeTaskIndex = newTaskList1.findIndex(
+        ({ taskId }) => taskId === action.payload.taskId
+      );
+      newTaskList1[changeTaskIndex].status = action.payload.statusId;
+      return {
+        ...state,
+        taskList: [...newTaskList1]
+      };
+      case actionTypes.MOVE_TASK_COMPLETE:
+        return {
+          ...state,
+          taskList: [...state.taskList.map(data => ({ ...data, status: 5 }))]
+        };
     default:
       return state;
   }

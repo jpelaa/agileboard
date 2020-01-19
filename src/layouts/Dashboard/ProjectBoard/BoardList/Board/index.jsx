@@ -6,7 +6,7 @@ const Board = props => {
     e.dataTransfer.setData("dragIndex", dragIndex);
   };
 
-  const onDragOver = e => {
+  const onDragOver = (e, taskId) => {
     e.preventDefault();
   };
 
@@ -15,7 +15,6 @@ const Board = props => {
       dragTaskId: e.dataTransfer.getData("dragIndex"),
       dropTaskId: dropIndex
     });
-    e.dataTransfer.clearData();
   };
 
   return (
@@ -23,7 +22,7 @@ const Board = props => {
       className="project-board-card-content-list"
       draggable={true}
       onDragStart={e => onDragStart(e, props.taskId)}
-      onDragOver={e => onDragOver(e)}
+      onDragOver={e => onDragOver(e, props.taskId)}
       onDrop={e => onDrop(e, props.taskId)}
     >
       <div>
@@ -31,7 +30,7 @@ const Board = props => {
       </div>
       <div className="project-board-card-content-list-footer">
         <div className="task-id">
-          <TaskIcon />
+          <TaskIcon type={props.type} />
           <p>{props.taskId || "SC-112"}</p>
         </div>
         <div className="assignee">{props.assignee || "ram"}</div>

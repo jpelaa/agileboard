@@ -6,7 +6,9 @@ const UserActionTypes = {
 };
 
 const TaskActionTypes = {
-  SWAP_TASKS: "SWAP_TASKS"
+  SWAP_TASKS: "SWAP_TASKS",
+  MOVE_TASK: "MOVE_TASK",
+  MOVE_TASK_COMPLETE: "MOVE_TASK_COMPLETE"
 };
 
 export default {
