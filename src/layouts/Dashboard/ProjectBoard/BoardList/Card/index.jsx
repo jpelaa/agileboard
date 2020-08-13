@@ -1,13 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import DescIcon from "./DescIcon";
-import { useStyleForDrag, useOnClickOutside } from "helper/customhooks";
+import { useStyleForDrag } from "helper/customhooks";
 import Modal from "components/Modal";
-import EditCard from "./EditCard";
+import EditCard from "containers/EditCard";
 
 const Card = (props) => {
   const [shouldShowModal, setModalShow] = useState(false);
 
   useStyleForDrag();
+
   const onDragStart = (e, dragIndex) => {
     e.dataTransfer.setData("dragIndex", dragIndex);
   };
@@ -22,10 +23,6 @@ const Card = (props) => {
       dropTaskId: dropIndex,
     });
   };
-
-  const ref = useRef(null);
-
-  useOnClickOutside(ref, () => setModalShow(false));
 
   return (
     <>
@@ -48,11 +45,11 @@ const Card = (props) => {
       {shouldShowModal && (
         <Modal>
           <EditCard
-            ref={ref}
             title={props.title}
             id={props.id}
             description={props.description}
             comments={props.comments}
+            closeModal={() => setModalShow(false)}
           />
         </Modal>
       )}

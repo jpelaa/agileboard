@@ -93,10 +93,14 @@
   }
 }
 
-.icon-sm {
-  height: 20px;
-  font-size: 16px;
-  line-height: 20px;
-  width: 20px;
-  text-align: center;
+.comments {
+  color: $gray-3;
+  .comment-li {
+    margin: 0.25rem;
+  }
+}
+
+.comment-li {
+  @include flexWithDirection(row);
+  justify-content: space-between;
 }

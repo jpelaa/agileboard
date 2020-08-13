@@ -45,8 +45,32 @@ export default function (state = initialState, action) {
         byId: {
           ...state.byId,
           [action.payload.taskId]: {
-            id: action.payload.taskId,
-            title: action.payload.title,
+            ...action.payload,
+          },
+        },
+      };
+    case actionTypes.UPDATE_DESC:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.taskId]: {
+            ...state.byId[action.payload.taskId],
+            description: action.payload.description,
+          },
+        },
+      };
+    case actionTypes.ADD_NEW_COMMENTS_TO_TASK:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.taskId]: {
+            ...state.byId[action.payload.taskId],
+            comments: [
+              ...state.byId[action.payload.taskId].comments,
+              action.payload.commentId,
+            ],
           },
         },
       };

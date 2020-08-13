@@ -13,3 +13,17 @@
 ._capitalize {
   text-transform: capitalize;
 }
+
+._jc-fe {
+  justify-content: flex-end;
+}
+
+._mx-25-50 {
+  margin: 0.25rem 0.5rem;
+}
+
+._h-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
