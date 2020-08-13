@@ -1,6 +1,7 @@
 import React, { useState, memo, useEffect } from "react";
 import AgilifyLogo from "assets/svg/agile.svg";
 import BrandName from "components/BrandName";
+import { useEnterClick } from "helper/customhooks";
 
 const Login = ({ shouldRedirect, history, userAuthentication, resetUsers }) => {
   const [username, setUserName] = useState("");
@@ -25,6 +26,8 @@ const Login = ({ shouldRedirect, history, userAuthentication, resetUsers }) => {
     }, 3000);
   };
 
+  useEnterClick(deferredCall);
+
   return (
     <section>
       <div className="login">
@@ -39,13 +42,13 @@ const Login = ({ shouldRedirect, history, userAuthentication, resetUsers }) => {
               type="text"
               placeholder="enter your email"
               value={username}
-              onChange={e => setUserName(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
             />
             <input
               type="password"
               placeholder="enter your password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="button"

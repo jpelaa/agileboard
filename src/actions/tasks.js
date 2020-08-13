@@ -3,19 +3,26 @@ import ActionTypes from "action-types";
 export function swapTasks(payload) {
   return {
     type: ActionTypes.SWAP_TASKS,
-    payload
+    payload,
   };
 }
 
 export function moveTask(payload) {
   return {
     type: ActionTypes.MOVE_TASK,
-    payload
+    payload,
   };
 }
 
 export function moveTaskToComplete() {
   return {
-    type: ActionTypes.MOVE_TASK_COMPLETE
+    type: ActionTypes.MOVE_TASK_COMPLETE,
+  };
+}
+
+export function addNewTask(payload) {
+  return {
+    type: ActionTypes.ADD_NEW_TASK,
+    payload,
   };
 }

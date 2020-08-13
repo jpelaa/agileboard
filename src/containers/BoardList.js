@@ -3,15 +3,15 @@ import BoardList from "layouts/Dashboard/ProjectBoard/BoardList";
 import { bindActionCreators } from "redux";
 import { moveTask } from "actions/tasks";
 
-const mapStateToProps = (state, props) => ({
-  taskList: getTaskBasedOnRole(state, props)
-});
+// const mapStateToProps = (state, props) => ({
+//   taskList:
+// });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ moveTask }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardList);
+export default connect(null, mapDispatchToProps)(BoardList);
 
 const getTaskBasedOnRole = (state, props) => {
   const role = state.users.userList.find(
