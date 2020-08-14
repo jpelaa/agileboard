@@ -1,3 +1,5 @@
+@import "abstracts/variables";
+
 ._fr {
   float: right;
 }
@@ -30,4 +32,12 @@
 
 ._pb-1 {
   padding-bottom: 1rem;
+}
+
+.tilt {
+  border: 2px solid $gray-3;
+  border-radius: 10px;
+  transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
 }

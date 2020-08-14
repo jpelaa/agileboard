@@ -29,7 +29,16 @@ const EditCard = (props) => {
       </div>
       <div className="edit-card-header _df _jc-sb">
         <h2 className="_capitalize">{props.title}</h2>
-        <button className="button _fr" onClick={() => console.log("clicked")}>
+        <button
+          className="button _fr"
+          onClick={() => {
+            props.deleteTaskFromStatus({
+              statusId: props.statusId,
+              taskId: props.id,
+            });
+            props.closeModal();
+          }}
+        >
           Delete card
         </button>
       </div>

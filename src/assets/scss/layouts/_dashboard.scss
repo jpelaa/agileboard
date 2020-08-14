@@ -2,6 +2,7 @@
 
 .dashboard {
   padding: 1rem;
+  height: calc(100vh - 50px);
   background: $tertiary;
 }
 
@@ -39,6 +40,8 @@
     }
     &-header {
       padding: 1rem 0.5rem;
+      @include flexWithDirection(row);
+      justify-content: space-between;
       p {
         font-size: 1rem;
         text-transform: uppercase;

@@ -9,6 +9,13 @@ export function addNewTask(payload) {
   };
 }
 
+export function deleteTask(payload) {
+  return {
+    type: ActionTypes.DELETE_TASK,
+    payload,
+  };
+}
+
 export function updateDesc(payload) {
   return {
     type: ActionTypes.UPDATE_DESC,

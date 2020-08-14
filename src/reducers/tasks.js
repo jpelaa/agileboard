@@ -49,6 +49,16 @@ export default function (state = initialState, action) {
           },
         },
       };
+
+    case actionTypes.DELETE_TASK:
+      return {
+        ...state,
+        allIds: [...state.allIds.filter((data) => data !== action.payload)],
+        byId: {
+          ...state.byId,
+          [action.payload]: undefined,
+        },
+      };
     case actionTypes.UPDATE_DESC:
       return {
         ...state,

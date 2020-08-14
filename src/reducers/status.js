@@ -2,6 +2,7 @@ import actionTypes from "action-types";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
+  sprintName: "SPRINT 1",
   allIds: [],
   byId: {},
 };
@@ -108,6 +109,30 @@ export default function (state = initialState, action) {
           ...state.byId,
           [action.payload.dragStatusId]: { ...dragStatusData },
           [action.payload.dropStatusId]: { ...dropStatusData },
+        },
+      };
+
+    case actionTypes.DELETE_STATUS:
+      return {
+        ...state,
+        allIds: [...state.allIds.filter((data) => data !== action.payload)],
+        byId: {
+          ...state.byId,
+          [action.payload]: undefined,
+        },
+      };
+
+    case actionTypes.DELETE_TASK_IN_STATUS:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.statusId]: {
+            ...state.byId[action.payload.statusId],
+            tasks: state.byId[action.payload.statusId].tasks.filter(
+              (data) => data !== action.payload.taskId
+            ),
+          },
         },
       };
 

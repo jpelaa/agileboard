@@ -1,9 +1,17 @@
 import React from "react";
 import Card from "containers/Card";
 import NewCard from "containers/NewCard";
+import DeleteSvg from "assets/svg/trash.svg";
 import { useStyleForDrag } from "helper/customhooks";
 
-const BoardList = ({ name, id, tasks, swapStatus, swapTasks }) => {
+const BoardList = ({
+  name,
+  id,
+  tasks,
+  swapStatus,
+  swapTasks,
+  deleteStatus,
+}) => {
   useStyleForDrag();
 
   const onDragStart = (e, id) => {
@@ -49,6 +57,12 @@ const BoardList = ({ name, id, tasks, swapStatus, swapTasks }) => {
     >
       <div className="project-board-card-header _h-pointer">
         <p>{name.replace("_", " ")}</p>
+        <img
+          className="icon-sm icon"
+          src={DeleteSvg}
+          alt="delete icon"
+          onClick={() => deleteStatus(id)}
+        />
       </div>
       <div
         className="project-board-card-content _pb-1"

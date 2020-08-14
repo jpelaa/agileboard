@@ -2,23 +2,29 @@ import { useEffect } from "react";
 export const useStyleForDrag = () => {
   useEffect(() => {
     document.addEventListener("dragstart", onDragStart, false);
-    document.addEventListener("dragover", () => {}, false);
+    document.addEventListener("dragover", onDragOver, false);
     document.addEventListener("dragend", onDragEnd, false);
-
     return () => {
       document.removeEventListener("dragstart", onDragStart, false);
-      document.removeEventListener("dragover", () => {}, false);
+      document.removeEventListener("dragover", onDragOver, false);
       document.removeEventListener("dragend", onDragEnd, false);
     };
   });
 };
 
 const onDragStart = (event) => {
-  event.target.style.background = "#d0bfff";
+  event.target.style.background = "#ffffff";
+  event.target.style.opacity = 0.3;
+};
+
+const onDragOver = (event) => {
+  event.preventDefault();
 };
 
 const onDragEnd = (event) => {
-  event.target.style.background = "#ffffff";
+  event.target.classList.remove("tilt");
+  event.target.style.background = "#d0bfff";
+  event.target.style.opacity = "";
 };
 
 export const useEnterClick = (callBack) => {

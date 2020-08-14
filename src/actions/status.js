@@ -1,11 +1,33 @@
 import ActionTypes from "action-types";
 import { v4 as uuid } from "uuid";
-import { addNewTask } from "./tasks";
+import { addNewTask, deleteTask } from "./tasks";
 
 export function addNewStatus(payload) {
   return {
     type: ActionTypes.ADD_NEW_STATUS,
     payload,
+  };
+}
+
+export function deleteStatus(payload) {
+  return {
+    type: ActionTypes.DELETE_STATUS,
+    payload,
+  };
+}
+
+export function deleteTaskInStatus(payload) {
+  return {
+    type: ActionTypes.DELETE_TASK_IN_STATUS,
+    payload,
+  };
+}
+
+export function deleteTaskFromStatus(payload) {
+  return (dispatch) => {
+    console.log(payload, " payload ");
+    dispatch(deleteTaskInStatus(payload));
+    dispatch(deleteTask(payload.taskId));
   };
 }
 

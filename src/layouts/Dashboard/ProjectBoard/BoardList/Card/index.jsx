@@ -46,12 +46,12 @@ const Card = (props) => {
         </div>
         <div className="project-board-card-content-list-footer">
           <div className="task-id">{props.description && <DescIcon />}</div>
-          <div className="assignee">{props.assignee || "ram"}</div>
         </div>
       </div>
       {shouldShowModal && (
         <Modal>
           <EditCard
+            statusId={props.statusId}
             title={props.title}
             id={props.id}
             description={props.description}
