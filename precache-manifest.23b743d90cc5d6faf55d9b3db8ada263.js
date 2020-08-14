@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dca9b6233117b6b948ec2570c826dcec",
+    "revision": "eb3d4badfc7623a122e9da6747f5e524",
     "url": "/agileboard/index.html"
   },
   {
-    "revision": "6ccec481c03f932b2e2c",
-    "url": "/agileboard/static/css/main.0fb9df3e.chunk.css"
+    "revision": "69069a6146033d3d26ca",
+    "url": "/agileboard/static/css/main.1efd9421.chunk.css"
   },
   {
     "revision": "492f4ab5263e448987b0",
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/agileboard/static/js/5.8fa3a51e.chunk.js"
   },
   {
-    "revision": "6ccec481c03f932b2e2c",
+    "revision": "69069a6146033d3d26ca",
     "url": "/agileboard/static/js/main.badf90d6.chunk.js"
   },
   {
