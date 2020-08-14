@@ -1,28 +1,10 @@
 import { connect } from "react-redux";
 import BoardList from "layouts/Dashboard/ProjectBoard/BoardList";
 import { bindActionCreators } from "redux";
-import { moveTask } from "actions/tasks";
+import { swapStatus, swapTasks, deleteStatus } from "actions/status";
 
-const mapStateToProps = (state, props) => ({
-  taskList: getTaskBasedOnRole(state, props)
-});
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ moveTask }, dispatch);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ swapStatus, swapTasks, deleteStatus }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BoardList);
-
-const getTaskBasedOnRole = (state, props) => {
-  const role = state.users.userList.find(
-    ({ username, role }) => username === state.users.currentUser
-  ).role;
-  if (role === 1) {
-    return state.tasks.taskList.filter(({ status }) => status === props.id);
-  } else {
-    return state.tasks.taskList.filter(
-      ({ status, assignee }) =>
-        status === props.id && assignee === state.users.currentUser
-    );
-  }
-};
+export default connect(null, mapDispatchToProps)(BoardList);

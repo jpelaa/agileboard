@@ -1,108 +1,11 @@
-import { TASK_TYPE } from "../static";
 import actionTypes from "action-types";
 
 const initialState = {
-  sprintName: "Sprint 10",
-  taskList: [
-    {
-      taskId: "SC-110",
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "clean up all the now-unnecessary code that we can eliminate with `EditableView` out of our lives",
-      assignee: "prasath",
-      storyPoint: 2,
-      status: 1
-    },
-    {
-      taskId: "SC-111",
-      type: TASK_TYPE.TASK,
-      epicId: 1,
-      description:
-        "(8) Clicking the collection beneath a board should filter by collection, not open collections pop-over",
-      storyPoint: 1,
-      assignee: "prasath",
-      status: 2
-    },
-    {
-      taskId: "SC-112",
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "prasath",
-      storyPoint: 4,
-      status: 2
-    },
-    {
-      taskId: "SC-113",
-
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "prasath",
-      storyPoint: 4,
-      status: 3
-    },
-    {
-      taskId: "SC-114",
-
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "prasath",
-      storyPoint: 4,
-      status: 4
-    },
-    {
-      taskId: "SC-115",
-
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "prasath",
-      storyPoint: 4,
-      status: 1
-    },
-    {
-      taskId: "SC-116",
-
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "manoj",
-      storyPoint: 4,
-      status: 2
-    },
-    {
-      taskId: "SC-117",
-
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "manoj",
-      storyPoint: 4,
-      status: 4
-    },
-    {
-      taskId: "SC-118",
-      type: TASK_TYPE.STORY,
-      epicId: 1,
-      description:
-        "(2) Client release provides `index` as direct file as well as _at least_`index.en-GB`",
-      assignee: "manoj",
-      storyPoint: 4,
-      status: 4
-    }
-  ]
+  allIds: [],
+  byId: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case actionTypes.SWAP_TASKS:
       const newTaskList = [...state.taskList];
@@ -118,7 +21,7 @@ export default function(state = initialState, action) {
       newTaskList[dropIndex] = temp;
       return {
         ...state,
-        taskList: [...newTaskList]
+        taskList: [...newTaskList],
       };
     case actionTypes.MOVE_TASK:
       const newTaskList1 = [...state.taskList];
@@ -128,13 +31,59 @@ export default function(state = initialState, action) {
       newTaskList1[changeTaskIndex].status = action.payload.statusId;
       return {
         ...state,
-        taskList: [...newTaskList1]
+        taskList: [...newTaskList1],
       };
-      case actionTypes.MOVE_TASK_COMPLETE:
-        return {
-          ...state,
-          taskList: [...state.taskList.map(data => ({ ...data, status: 5 }))]
-        };
+    case actionTypes.MOVE_TASK_COMPLETE:
+      return {
+        ...state,
+        taskList: [...state.taskList.map((data) => ({ ...data, status: 5 }))],
+      };
+    case actionTypes.ADD_NEW_TASK:
+      return {
+        ...state,
+        allIds: [...state.allIds, action.payload.taskId],
+        byId: {
+          ...state.byId,
+          [action.payload.taskId]: {
+            ...action.payload,
+          },
+        },
+      };
+
+    case actionTypes.DELETE_TASK:
+      return {
+        ...state,
+        allIds: [...state.allIds.filter((data) => data !== action.payload)],
+        byId: {
+          ...state.byId,
+          [action.payload]: undefined,
+        },
+      };
+    case actionTypes.UPDATE_DESC:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.taskId]: {
+            ...state.byId[action.payload.taskId],
+            description: action.payload.description,
+          },
+        },
+      };
+    case actionTypes.ADD_NEW_COMMENTS_TO_TASK:
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.taskId]: {
+            ...state.byId[action.payload.taskId],
+            comments: [
+              ...state.byId[action.payload.taskId].comments,
+              action.payload.commentId,
+            ],
+          },
+        },
+      };
     default:
       return state;
   }
