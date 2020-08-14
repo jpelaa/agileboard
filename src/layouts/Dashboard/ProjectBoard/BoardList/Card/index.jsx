@@ -9,18 +9,25 @@ const Card = (props) => {
 
   useStyleForDrag();
 
-  const onDragStart = (e, dragIndex) => {
-    e.dataTransfer.setData("dragIndex", dragIndex);
+  const onDragStart = (e, dragId) => {
+    e.dataTransfer.setData("dragTaskId", dragId);
   };
 
   const onDragOver = (e) => {
     e.preventDefault();
   };
 
-  const onDrop = (e, dropIndex) => {
+  const onDrop = (e, dropId) => {
+    e.stopPropagation();
+    const dragStatusId = e.dataTransfer.getData("dragStatusId");
+    const dragTaskId = e.dataTransfer.getData("dragTaskId");
+    e.dataTransfer.clearData();
+
     props.swapTasks({
-      dragTaskId: e.dataTransfer.getData("dragIndex"),
-      dropTaskId: dropIndex,
+      dragStatusId,
+      dropStatusId: props.statusId,
+      dragTaskId,
+      dropTaskId: dropId,
     });
   };
 

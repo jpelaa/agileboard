@@ -33,3 +33,40 @@ export function addNewTaskToStatus(payload) {
     payload,
   };
 }
+
+export function swapStatus(payload) {
+  return {
+    type: ActionTypes.SWAP_STATUS,
+    payload,
+  };
+}
+
+export function swapTaskInSameStatus(payload) {
+  return {
+    type: ActionTypes.SWAP_TASKS_IN_SAME_STATUS,
+    payload,
+  };
+}
+
+export function addTaskInDifferentStatus(payload) {
+  return {
+    type: ActionTypes.ADD_TASKS_IN_DIFFERENT_STATUS,
+    payload,
+  };
+}
+
+export function swapTasks(payload) {
+  return (dispatch) => {
+    if (payload.dragStatusId === payload.dropStatusId) {
+      dispatch(
+        swapTaskInSameStatus({
+          statusId: payload.dragStatusId,
+          dropTaskId: payload.dropTaskId,
+          dragTaskId: payload.dragTaskId,
+        })
+      );
+    } else {
+      dispatch(addTaskInDifferentStatus(payload));
+    }
+  };
+}

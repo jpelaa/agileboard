@@ -2,26 +2,6 @@ import ActionTypes from "action-types";
 import { v4 as uuid } from "uuid";
 import { addNewComments } from "actions/comments";
 
-export function swapTasks(payload) {
-  return {
-    type: ActionTypes.SWAP_TASKS,
-    payload,
-  };
-}
-
-export function moveTask(payload) {
-  return {
-    type: ActionTypes.MOVE_TASK,
-    payload,
-  };
-}
-
-export function moveTaskToComplete() {
-  return {
-    type: ActionTypes.MOVE_TASK_COMPLETE,
-  };
-}
-
 export function addNewTask(payload) {
   return {
     type: ActionTypes.ADD_NEW_TASK,
@@ -38,7 +18,6 @@ export function updateDesc(payload) {
 
 export function addCommentsFromTask(payload) {
   return (dispatch) => {
-    console.log("asdasd", payload);
     const commentId = uuid();
     const payloadForTask = {
       taskId: payload.taskId,

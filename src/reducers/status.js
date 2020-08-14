@@ -37,6 +37,80 @@ export default function (state = initialState, action) {
         },
       };
 
+    case actionTypes.SWAP_STATUS:
+      const allIdsTemp = [...state.allIds];
+      const dropIndex = allIdsTemp.findIndex(
+        (data) => data === action.payload.dropStatusId
+      );
+      const dragIndex = allIdsTemp.findIndex(
+        (data) => data === action.payload.dragStatusId
+      );
+      [allIdsTemp[dropIndex], allIdsTemp[dragIndex]] = [
+        allIdsTemp[dragIndex],
+        allIdsTemp[dropIndex],
+      ];
+
+      return {
+        ...state,
+        allIds: allIdsTemp,
+      };
+
+    case actionTypes.SWAP_TASKS_IN_SAME_STATUS:
+      const statusData = { ...state.byId[action.payload.statusId] };
+      const tasks = [...statusData.tasks];
+      const dropTaskIndex = tasks.findIndex(
+        (data) => data === action.payload.dropTaskId
+      );
+      const dragTaskIndex = tasks.findIndex(
+        (data) => data === action.payload.dragTaskId
+      );
+      [tasks[dropTaskIndex], tasks[dragTaskIndex]] = [
+        tasks[dragTaskIndex],
+        tasks[dropTaskIndex],
+      ];
+      statusData.tasks = tasks;
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.statusId]: { ...statusData },
+        },
+      };
+
+    case actionTypes.ADD_TASKS_IN_DIFFERENT_STATUS:
+      const dragStatusData = { ...state.byId[action.payload.dragStatusId] };
+      const dropStatusData = { ...state.byId[action.payload.dropStatusId] };
+
+      dragStatusData.tasks = dragStatusData.tasks.filter(
+        (data) => data !== action.payload.dragTaskId
+      );
+
+      if (action.payload.dropTaskId) {
+        const dropTaskIndexIntoDropStatus = dropStatusData.tasks.findIndex(
+          (data) => data === action.payload.dropTaskId
+        );
+
+        dropStatusData.tasks = [
+          ...dropStatusData.tasks.slice(0, dropTaskIndexIntoDropStatus),
+          action.payload.dragTaskId,
+          ...dropStatusData.tasks.slice(dropTaskIndexIntoDropStatus),
+        ];
+      } else {
+        dropStatusData.tasks = [
+          ...dropStatusData.tasks,
+          action.payload.dragTaskId,
+        ];
+      }
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.payload.dragStatusId]: { ...dragStatusData },
+          [action.payload.dropStatusId]: { ...dropStatusData },
+        },
+      };
+
     default:
       return state;
   }
